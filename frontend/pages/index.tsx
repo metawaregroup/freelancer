@@ -57,11 +57,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const popularProducts = products;
   const trendingProducts = products;
   const grocery1NavList = products;
-  const test = JSON.parse(await (await fetch("http://nginx:80/api/jobs")).text());
 
   return {
     props: {
-      test,
       products,
       grocery1NavList,
       popularProducts,
