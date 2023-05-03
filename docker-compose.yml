@@ -1,0 +1,56 @@
+version: "3"
+services:
+  frontend:
+    container_name: frontend
+    ports:
+      - 3000:3000
+    build:
+      context: ./.docker/frontend
+    tty: true
+    volumes:
+      - ./frontend:/usr/src/app
+    environment:
+      - WATCHPACK_POLLING=true
+
+  backend:
+    container_name: backend
+    build: ./.docker/backend
+    volumes:
+      - ./backend:/var/www
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 2080:80
+    volumes:
+      - ./backend:/var/www
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /var/www
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lOe2faKDask38fnv
+      MYSQL_DATABASE: freelancer
+      MYSQL_USER: readandwrite
+      MYSQL_PASSWORD: zMdj3Kdad32Jlp9Y
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./.docker/.db/data:/var/lib/mysql
+      - ./.docker/.db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./.docker/.db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    container_name: redis
+    image: "redis:latest"
+    ports:
+      - 6379:6379
+    volumes:
+      - "./.docker/.redis:/data"
