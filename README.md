@@ -13,9 +13,9 @@ https://azure.microsoft.com/ja-jp/products/visual-studio-code
 1. Markdown Preview Enhanced
 1. PHP Intelephense
 1. PHP Namespace Resolver
+1. PHP Debuger
 1. Prettier - Code formatter
 1. Jest Runner
-1. PHP Debuger
 
 ### Homebrew
 
@@ -27,19 +27,19 @@ https://brew.sh/
 
 ### node
 
+https://nodejs.org/
+
 ```shell
 brew install node
 ```
 
-https://nodejs.org/
-
 ### yarn
+
+https://yarnpkg.com/
 
 ```shell
 brew install yarn
 ```
-
-https://yarnpkg.com/
 
 ### Docker
 
@@ -52,10 +52,6 @@ brew install docker-compose
 
 https://docs.docker.jp/docker-for-mac/install.html
 
-Make sure that you have the last stable [NodeJS](https://nodejs.org/en/download/) and `yarn` version.
-
-- Do not delete the `yarn.lock file`
-
 ### React Develop tool
 
 https://react.dev/learn/react-developer-tools
@@ -63,20 +59,19 @@ https://react.dev/learn/react-developer-tools
 # Clone
 
 ```shell
-git clone project
-cd project
+git clone https://github.com/metawaregroup/freelancer
+cd freelancer
+cd frontend
+# react install
 yarn install;
+cd ..
+cd backend
+# Laravel install
+composer install
+cd ..
+# Docker 環境構築
+docker-compose up -d
 ```
-
-## Start
-
-インストールは成功したら、下記の命令で、開発サーバーを起動できます。
-
-```shell
-yarn dev
-```
-
-This starts a local webserver at `http://localhost:3000` and auto detect file changes:
 
 ## Build
 
@@ -84,52 +79,56 @@ This starts a local webserver at `http://localhost:3000` and auto detect file ch
 yarn export
 ```
 
-# Docker 環境構築
-
-```shell
-docker-compose up -d
-```
-
-# PHP サーバー起動
-
-```shell
-php artisan serv
-```
-
 # Laravel
 
+## Create Database
+
+```shell
+# データーテーブルの作成
 php artisan migrate
-
-php artisan make:model User
-
-必要のないテーブルを無視する
-class AppServiceProvider extends ServiceProvider
-{
-public function register()
-{
-Sanctum::ignoreMigrations();
-}
-}
-
-全てのテーブルを削除する
-
+# 初期データーを作成する
+php artisan migrate --seed
+# 全てのテーブルを削除して、データーテーブルの作成
 php artisan migrate:fresh
 
-Default data
+# モデルの作成
+php artisan make:model User
+# テーブルの作成
+php artisan make:migration create_[tests]_table --create=[tests]
+# Factoryの作成
+php artisan make:factory [User]
+```
 
-この部分はすでに作成済みなので無視していいです。
+###### 必要のないテーブルを無視する
+
+```php
+class AppServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        Sanctum::ignoreMigrations();
+    }
+}
+```
+
+##### artisan コマンドを作成する
+
+```shell
 php artisan make:command MigrateClearCommand
+```
 
-データーベース作成した後に下記の命令を使って初期データーを追加できます。
-php artisan migrate:master
-php artisan migrate:dummy
+###### わからないバグがあったときに下記の命令を実行してください。
 
+```shell
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
+```
 
-create controller
+## create controller
 
+```shell
 php artisan make:controller <controller-name> --plain
 php artisan make:middleware SecondMiddleware
+```

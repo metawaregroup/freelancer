@@ -20,12 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/hello', function () {
-    return 'Hello Next.js';
-});
-
 Route::get('/jobs', [JobController::class, 'getJobs']);
-
-// Allowed Client Only
-Route::middleware(['allowed_client'])->group(function () {
-});
