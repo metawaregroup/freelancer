@@ -114,7 +114,7 @@ const Header: FC<HeaderProps> = ({ isFixed, className, searchInput }) => {
           >
             <Box sx={{ width: "auto", padding: 2, height: "100vh" }}>
               <FlexBetween mb={1}>
-                <Paragraph>Search to Bazaar</Paragraph>
+                <Paragraph>Search</Paragraph>
 
                 <IconButton onClick={toggleSearchBar}>
                   <Clear />
