@@ -1,16 +1,11 @@
 import Link from "next/link";
-import { FC, Fragment, useCallback, useState } from "react";
-import { Add, Favorite, Remove, RemoveRedEye } from "@mui/icons-material";
-import ShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import { Box, Button, Chip, styled } from "@mui/material";
+import { FC, useState } from "react";
+import { Box, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
-import LazyImage from "components/LazyImage";
 import BazaarCard from "components/BazaarCard";
-import { H3, Span } from "components/Typography";
-import { FlexBetween, FlexBox } from "components/flex-box";
-import ProductViewDialog from "components/products/ProductViewDialog";
-import { CartItem, useAppContext } from "contexts/AppContext";
+import { H3 } from "components/Typography";
+import { FlexBox } from "components/flex-box";
+import { useAppContext } from "contexts/AppContext";
 import Job from "models/Job.model";
 
 const StyledBazaarCard = styled(BazaarCard)(({ theme }) => ({
