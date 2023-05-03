@@ -9,7 +9,7 @@ import { CacheProvider } from "@emotion/react";
 import { appWithTranslation } from "next-i18next";
 import RTL from "components/RTL";
 import MuiTheme from "theme/MuiTheme";
-import OpenGraphTags from "utils/OpenGraphTags";
+
 import { AppProvider } from "contexts/AppContext";
 import SettingsProvider from "contexts/SettingContext";
 import SnackbarProvider from "components/SnackbarProvider";
@@ -48,7 +48,6 @@ const App = (props: MyAppProps) => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <OpenGraphTags />
         <title>あなたに合う案件を提供しております。</title>
       </Head>
 
