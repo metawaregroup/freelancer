@@ -32,7 +32,7 @@ const JobCarousel: FC<JobCarouselProps> = ({ jobs, title }) => {
 
   return (
     <CategorySectionCreator title={title} seeMoreLink="#" mb={0}>
-      <SubTitle>Best collection in 2021 for you!</SubTitle>
+      {/* <SubTitle>Best collection in 2021 for you!</SubTitle> */}
 
       <Carousel
         infinite={true}

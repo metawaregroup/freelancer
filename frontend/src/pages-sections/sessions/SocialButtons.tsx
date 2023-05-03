@@ -2,7 +2,6 @@ import Link from "next/link";
 import { FC, Fragment } from "react";
 import { Box, Button, Divider } from "@mui/material";
 import Image from "components/BazaarImage";
-import { H6 } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
 
 // =======================================

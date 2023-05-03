@@ -7,15 +7,16 @@ import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Clear, KeyboardArrowDown, PersonOutline } from "@mui/icons-material";
 import clsx from "clsx";
-import Icon from "components/icons";
+
 import { layoutConstant } from "utils/constants";
 import Login from "pages-sections/sessions/Login";
 import { useAppContext } from "contexts/AppContext";
 import Image from "components/BazaarImage";
-import Category from "components/icons/Category";
+
 import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
-import ShoppingBagOutlined from "components/icons/ShoppingBagOutlined";
+import Search from "components/icons/Search";
+import User from "components/icons/User";
 
 // styled component
 export const HeaderWrapper = styled(Box)(({ theme }) => ({
@@ -87,7 +88,7 @@ const Header: FC<HeaderProps> = ({ isFixed, className, searchInput }) => {
             <Link href="/">
               <Image
                 height={44}
-                src="/assets/images/bazaar-black-sm.svg"
+                src="/assets/images/logo.png"
                 alt="logo"
               />
             </Link>
@@ -95,17 +96,11 @@ const Header: FC<HeaderProps> = ({ isFixed, className, searchInput }) => {
             {/* RIGHT CONTENT - LOGIN, CART, SEARCH BUTTON */}
             <FlexBox justifyContent="end" flex={1}>
               <Box component={IconButton} onClick={toggleSearchBar}>
-                <Icon.Search sx={ICON_STYLE} />
+                <Search sx={ICON_STYLE} />
               </Box>
 
               <Box component={IconButton} onClick={toggleDialog}>
-                <Icon.User sx={ICON_STYLE} />
-              </Box>
-
-              <Box component={IconButton} onClick={toggleSidenav}>
-                <Badge badgeContent={state.cart.length} color="primary">
-                  <Icon.CartBag sx={ICON_STYLE} />
-                </Badge>
+                <User sx={ICON_STYLE} />
               </Box>
             </FlexBox>
           </FlexBetween>
